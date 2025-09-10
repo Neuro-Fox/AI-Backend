@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs / Databases
+*.log
+*.sqlite3
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Test / Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Models / Data
+*.pkl
+*.h5
+*.ckpt
+*.csv
+*.json
+*.zip
+*.tar
+*.gz
+
+# Custom (adjust as needed)
+
