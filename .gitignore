@@ -43,14 +43,13 @@ coverage.xml
 *.py,cover
 
 # Models / Data
-*.pkl
 *.h5
 *.ckpt
 *.csv
-*.json
 *.zip
 *.tar
 *.gz
+alerts.json
 
 # Custom (adjust as needed)
 
