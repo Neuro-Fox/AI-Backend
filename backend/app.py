@@ -31,6 +31,105 @@ w3 = Web3(Web3.HTTPProvider(ETH_NODE_URL))
 # Replace this with your actual contract ABI
 CONTRACT_ABI = [
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_alertMessage",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "int256",
+				"name": "_latitude",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_longitude",
+				"type": "int256"
+			}
+		],
+		"name": "Alert",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_homeAddress",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_phoneNumber",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_aadhar",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_passport",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_days",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "string[][]",
+				"name": "_longitudes",
+				"type": "string[][]"
+			},
+			{
+				"internalType": "string[][]",
+				"name": "_latitudes",
+				"type": "string[][]"
+			},
+			{
+				"internalType": "string[][]",
+				"name": "_locationNames",
+				"type": "string[][]"
+			}
+		],
+		"name": "registerUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -103,6 +202,65 @@ CONTRACT_ABI = [
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_userAddress",
+				"type": "address"
+			}
+		],
+		"name": "expireUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "removeAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_alertMessage",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_alertType",
+				"type": "string"
+			},
+			{
+				"internalType": "int256",
+				"name": "_latitude",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_longitude",
+				"type": "int256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_radius",
+				"type": "uint256"
+			}
+		],
+		"name": "sendZoneAlert",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"anonymous": False,
 		"inputs": [
 			{
@@ -147,58 +305,47 @@ CONTRACT_ABI = [
 		"type": "event"
 	},
 	{
+		"anonymous": False,
 		"inputs": [
 			{
+				"indexed": False,
 				"internalType": "string",
-				"name": "_alertMessage",
+				"name": "alertMessage",
 				"type": "string"
 			},
 			{
-				"internalType": "address",
-				"name": "_userAddress",
-				"type": "address"
+				"indexed": False,
+				"internalType": "string",
+				"name": "alertType",
+				"type": "string"
 			},
 			{
+				"indexed": False,
 				"internalType": "int256",
-				"name": "_latitude",
+				"name": "latitude",
 				"type": "int256"
 			},
 			{
+				"indexed": False,
 				"internalType": "int256",
-				"name": "_longitude",
+				"name": "longitude",
 				"type": "int256"
-			}
-		],
-		"name": "Alert",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
+			},
 			{
-				"internalType": "address",
-				"name": "_admin",
-				"type": "address"
-			}
-		],
-		"name": "addAdmin",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
+				"indexed": False,
+				"internalType": "uint256",
+				"name": "radius",
+				"type": "uint256"
+			},
 			{
-				"internalType": "address",
-				"name": "_userAddress",
-				"type": "address"
+				"indexed": False,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
 			}
 		],
-		"name": "expireUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		"name": "ZoneAlert",
+		"type": "event"
 	},
 	{
 		"inputs": [],
@@ -300,80 +447,8 @@ CONTRACT_ABI = [
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_homeAddress",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_email",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_phoneNumber",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_aadhar",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_passport",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "_days",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "string[][]",
-				"name": "_longitudes",
-				"type": "string[][]"
-			},
-			{
-				"internalType": "string[][]",
-				"name": "_latitudes",
-				"type": "string[][]"
-			},
-			{
-				"internalType": "string[][]",
-				"name": "_locationNames",
-				"type": "string[][]"
-			}
-		],
-		"name": "registerUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_admin",
-				"type": "address"
-			}
-		],
-		"name": "removeAdmin",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	}
-]  # keep the ABI JSON here
-
+]
 EVENT_QUEUE = []
 
 async def event_generator():

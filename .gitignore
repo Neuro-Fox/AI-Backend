@@ -50,6 +50,7 @@ coverage.xml
 *.tar
 *.gz
 alerts.json
+data.json
 
 # Custom (adjust as needed)
 
